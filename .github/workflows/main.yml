@@ -9,7 +9,7 @@ on:
   
 jobs:
   deploy:
-    runs-on: default
+    runs-on: Default
     name: Deploy using worker_1
     steps:
       - name: Checkout code
