@@ -27,7 +27,7 @@ jobs:
 
       - name: Build package
         run: |
-          python setup.py  sdist bdist_wheel
+          python setup.py sdist bdist_wheel
 
       - name: Upload to PyPI
-        run: twine upload --non-interactive --repository-url https://localhost:8083/ dist/*
+        run: twine upload --repository-url https://localhost:8083/ dist/* -u "" -p ""
