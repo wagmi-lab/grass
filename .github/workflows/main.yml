@@ -1,11 +1,9 @@
 name: Deploy to PyPI
 
-# on:
-#   push:
-#     branches:  
-#       - master
-on: 
-  workflow_dispatch
+on:
+  push:
+    branches:  
+      - master
   
 jobs:
   deploy:
@@ -27,4 +25,8 @@ jobs:
 
       - name: Build package
         run: |
+          # replace setup.py 0.0.1 with a variable
+          input="0.0.${{ github.run_attempt }}"
+          echo "New Version: $input"
+          sed -i "s/0.0.1/$input/g" setup.py
           python setup.py sdist upload -r local
