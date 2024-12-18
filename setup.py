@@ -13,7 +13,7 @@ HERE = pathlib.Path(__file__).parent
 
 # This call to setup() does all the work
 setup(
-    name='grass-fork',
+    name='grass_fork',
     version='0.0.1',
     packages=find_packages(),
     include_package_data=True,
