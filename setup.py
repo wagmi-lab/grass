@@ -16,11 +16,6 @@ setup(
     name='grass-fork',
     version='0.0.1',
     packages=find_packages(),
-    package_data={
-        '': [
-            'requirements.txt',
-        ],
-    },
     include_package_data=True,
     install_requires=install_reqs,
     author='Quant',
