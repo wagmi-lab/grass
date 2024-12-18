@@ -1,7 +1,7 @@
 import pathlib
 from setuptools import find_packages, setup
 
-with open('requirements.txt', 'r') as f:
+with open('"./requirements.txt"', 'r') as f:
     install_reqs = [
         s for s in [
             line.split('#', 1)[0].strip(' \t\n') for line in f
