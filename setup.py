@@ -1,7 +1,7 @@
 import pathlib
 from setuptools import find_packages, setup
 
-with open('"./requirements.txt"', 'r') as f:
+with open('requirements.txt', 'r') as f:
     install_reqs = [
         s for s in [
             line.split('#', 1)[0].strip(' \t\n') for line in f
@@ -16,6 +16,11 @@ setup(
     name='grass-fork',
     version='0.0.1',
     packages=find_packages(),
+    package_data={
+        'grass-fork': [
+            'requirements.txt',
+        ],
+    },
     include_package_data=True,
     install_requires=install_reqs,
     author='Quant',
