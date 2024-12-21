@@ -31,7 +31,8 @@ jobs:
           sed -i "s/0.0.1/$input/g" setup.py
           python setup.py sdist upload -r local
 
-      - uses: rickstaa/action-create-tag@v1
+      - uses: EndBug/latest-tag@latest
         with:
-          tag: "0.0.${{ github.run_number }}"
-          tag_exists_error: false
+          # You can change the name of the tag or branch with this input.
+          # Default: 'latest'
+          ref: "0.0.${{ github.run_number }}"
