@@ -22,6 +22,13 @@ from data.config import ACCOUNTS_FILE_PATH, PROXIES_FILE_PATH, REGISTER_ACCOUNT_
     CLAIM_REWARDS_ONLY, APPROVE_EMAIL, APPROVE_WALLET_ON_EMAIL, MINING_MODE, CONNECT_WALLET, \
     WALLETS_FILE_PATH, SEND_WALLET_APPROVE_LINK_TO_EMAIL, SINGLE_IMAP_ACCOUNT, SEMI_AUTOMATIC_APPROVE_LINK, \
     PROXY_DB_PATH, USE_CONSOLE_VERSION
+    
+    
+# parse the command line arguments
+import argparse
+parser = argparse.ArgumentParser(description='Grass Auto')
+parser.add_argument('--account', type=str, help='Path to accounts file')
+parser.add_argument('--proxy', type=str, help='Path to proxies file')
 
 
 def bot_info(name: str = ""):
@@ -120,7 +127,7 @@ async def worker_task(_id, account: str, proxy: str = None, wallet: str = None, 
             # await grass.ws_session.close()
 
 
-async def main():
+async def main(account_file: str = None, proxy_file: str = None):
     accounts = file_to_list(ACCOUNTS_FILE_PATH)
 
     if not accounts:
@@ -187,7 +194,15 @@ async def main():
 
 
 if __name__ == "__main__":
-    if sys.platform == 'win32':
+    if sys.platform == 'win32':        
+        
+        args = parser.parse_args()
+        if args.account:
+            ACCOUNTS_FILE_PATH = args.account
+        if args.proxy:
+            PROXIES_FILE_PATH = args.proxy
+        
+        
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
         if not USE_CONSOLE_VERSION:
