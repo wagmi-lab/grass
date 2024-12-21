@@ -206,8 +206,8 @@ class GrassRest(BaseClient):
 
     async def send_approve_link(self, endpoint: str):
         @retry(
-            stop=stop_after_attempt(3),
-            wait=wait_random(5, 7),
+            stop=stop_after_attempt(2),
+            wait=wait_random(120, 180),
             reraise=True,
             before_sleep=lambda retry_state, **kwargs: logger.info(f"{self.id} | Retrying to send {endpoint}... "
                                                                    f"Continue..."),
